@@ -2,17 +2,26 @@
 using PublisherData;
 using PublisherDomain;
 
-using (PubContext context = new PubContext())
+PubContext _context = new PubContext();
+
+AddSomeMoreAuthors();
+GetAuthors();
+
+QueryFilters();
+
+void QueryFilters()
 {
-    context.Database.EnsureCreated();
+    var authors = _context.Authors.Where(s=> EF.Functions.Like(s.FirstName, "J%")).ToList();
 }
 
-//GetAuthors();
-//AddAuthor();
-//GetAuthors();
-AddAuthorWithBook();
-GetAuthorWithBook();
-
+void AddSomeMoreAuthors()
+{
+    _context.Authors.Add(new Author { FirstName = "Ivan", LastName = "Panchenko"});
+    _context.Authors.Add(new Author { FirstName = "Don", LastName = "Din"});
+    _context.Authors.Add(new Author { FirstName = "Joim", LastName = "Kapser"});
+    _context.Authors.Add(new Author { FirstName = "Ann", LastName = "Malaha"});
+    _context.SaveChanges();
+}
 
 void AddAuthorWithBook()
 {

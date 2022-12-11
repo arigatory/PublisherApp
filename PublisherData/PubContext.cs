@@ -10,7 +10,7 @@ namespace PublisherData
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(@"Host=localhost;Username=postgres;Password=Pa$$w0rd;Database=PubDatabase");
+            optionsBuilder.UseNpgsql(@"Host=localhost;Username=root;Password=root;Database=PubDatabase");
         }
     }
 }

@@ -1,10 +1,27 @@
 ## Запуск postgres
 
 ``` bash
-docker run --name pgsql-dev -e POSTGRES_PASSWORD=Pa$$w0rd -p 5432:5432 postgres
+docker-compose up
 ```
 
-## Добавление пароля пользователю
+## Запуск pgAdmin
+
+<http://localhost:5050/>
+
+
+<img src="./images/pgAdmin.webp"
+     alt="Settings example" />
+
+Логин, пароль в файле `docker-compose.yml`
+
+## Строка подключения
+
+`@"Host=localhost;Username=root;Password=root;Database=PubDatabase"`
+
+### Добавление пароля пользователю
+
+Если запускать не через docker-compose, то тогда нужно вручную добавить пароль пользователю, 
+чтобы использовать в строке подключения
 
 ``` bash
 docker exec -it pgsql-dev bash
